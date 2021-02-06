@@ -20,13 +20,14 @@ function App() {
       setLoading(false)
     })
     .catch(err => console.log(err))
-  },[]);
+  },[searchterm]);
 
   
 
   return (
     <div className="container mx-auto">
-      <SearchImage/>
+      <SearchImage searchTerm={(term)=> setSearchterm(term)}/>
+      {!loading && images.length === 0 && <h1 className="text-6xl text-center mx-auto mt-32">No image Found</h1> }
       { loading ? <h1 className="text-6xl text-center mx-auto mt-32">Loading</h1> : <div className="grid grid-cols-3 gap-4">
       {images.map((image)=>  
         <ImageThumbnail key={image.id} image={image} />
