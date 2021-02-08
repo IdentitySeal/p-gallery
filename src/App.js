@@ -1,6 +1,10 @@
 import React,{useState,useEffect} from 'react'
 import ImageThumbnail from './components/ImageThumbnail'
 import SearchImage from './components/SearchImage'
+import ImageModal from './components/ImageModal'
+import Modal from 'react-modal';
+
+
 import './App.css';
 
 // import random from './blacKIMO.PNG'
@@ -9,6 +13,10 @@ function App() {
   const [images , setImages] = useState([]);
   const [loading , setLoading] =useState(true)
   const [searchterm,setSearchterm] = useState('')
+  const [showModal , setShowModal] = useState(false)
+
+
+  
 
 
   useEffect(()=>{
@@ -23,6 +31,15 @@ function App() {
   },[searchterm]);
 
   
+  const openModal = ()=> {
+    setShowModal(true)
+}
+
+const closeModal = ()=> {
+    setShowModal(false)
+
+}
+
 
   return (
     <div className="container mx-auto">
@@ -30,8 +47,12 @@ function App() {
       {!loading && images.length === 0 && <h1 className="text-6xl text-center mx-auto mt-32">No image Found</h1> }
       { loading ? <h1 className="text-6xl text-center mx-auto mt-32">Loading</h1> : <div className="grid grid-cols-3 gap-4">
       {images.map((image)=>  
-        <ImageThumbnail key={image.id} image={image} />
+        <div>
+        <ImageThumbnail openModal={openModal}  key={image.id} image={image} />
+        <ImageModal closeModal={closeModal} showModal={showModal} />
+        </div>
       )}
+
       </div>}
     </div>
 
