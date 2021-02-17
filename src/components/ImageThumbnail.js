@@ -1,11 +1,16 @@
-import React from 'react'
+import React,{useState} from 'react'
+import Modal from './Modal'
 
-export default function ImageThumbnail({image,openModal }) {
+export default function ImageThumbnail({image}) {
+      // console.log(image.webformatURL)
+      const [showModal , setShowModal] = useState(false)
+
+
     const tags =image.tags.split(',');
 
     return (
 
-    <div onClick={openModal} className="max-w-sm rounded overflow-hidden shadow-lg">
+    <div  className="max-w-sm rounded overflow-hidden shadow-lg">
       <img src={image.webformatURL} alt="" className="w-full"/>    
       <div className = "px-6 py-4">
         <div className="font-bold text-purple-500 text-xl mb-2">
@@ -36,7 +41,9 @@ export default function ImageThumbnail({image,openModal }) {
       )}
         
       </div>
-    
+      <button onClick={()=> setShowModal(true)}> Hey</button>
+        <Modal image={image} setShowModal={setShowModal} showModal={showModal}/>
+
     </div>
     )
 }

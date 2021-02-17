@@ -1,8 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import ImageThumbnail from './components/ImageThumbnail'
 import SearchImage from './components/SearchImage'
-import ImageModal from './components/ImageModal'
-import Modal from 'react-modal';
+import Modal from './components/Modal'
 
 
 import './App.css';
@@ -31,14 +30,14 @@ function App() {
   },[searchterm]);
 
   
-  const openModal = ()=> {
-    setShowModal(true)
-}
+//   const openModal = ()=> {
+//     setShowModal(true)
+// }
 
-const closeModal = ()=> {
-    setShowModal(false)
+// const closeModal = ()=> {
+//     setShowModal(false)
 
-}
+// }
 
 
   return (
@@ -48,12 +47,14 @@ const closeModal = ()=> {
       { loading ? <h1 className="text-6xl text-center mx-auto mt-32">Loading</h1> : <div className="grid grid-cols-3 gap-4">
       {images.map((image)=>  
         <div>
-        <ImageThumbnail openModal={openModal}  key={image.id} image={image} />
-        <ImageModal closeModal={closeModal} showModal={showModal} />
+        
+        <ImageThumbnail key={image.id} image={image} />
         </div>
       )}
 
+
       </div>}
+
     </div>
 
     
