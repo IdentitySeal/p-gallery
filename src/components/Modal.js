@@ -1,4 +1,4 @@
-import React ,{useEffect}from 'react'
+import React from 'react'
 
 
 export default function Modal({showModal,setShowModal,image}) {
@@ -17,15 +17,15 @@ export default function Modal({showModal,setShowModal,image}) {
             <div className='modal-content' onClick ={(e)=> e.stopPropagation()}>
                 <div className='modal-header'>
                 <h4 className="modal-title">
-                    Hey
+                <button onClick={closeModal} className="button"> &times;</button>
+
                 </h4>                
 
                 </div>
                 <div className='modal-body'>
-                    <img src={image.webformatURL}></img>
+                    <img className="modal-image" src={image.largeImageURL}></img>
                 </div>
                 <div className='modal-footer'>
-                    <button onClick={closeModal} className="button"> &times;</button>
                 </div>
 
             </div>

@@ -4,8 +4,12 @@ export default function SearchImage({searchTerm}) {
     const [text,setText] = useState('');
     const handleSubmit = (e)=> {
         e.preventDefault();
+        console.log(text)
         searchTerm(text)
 
+    }
+    if (text.length !== 0  && handleSubmit) {
+        console.log("TOP")
     }
     return (
         <div className="max-w-sm rounded overflow-hidden my-10 mx-auto">
